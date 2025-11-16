@@ -134,9 +134,6 @@ Abre el archivo `*-good.ts` y:
 # Instalar dependencias
 npm install
 
-# Ejecutar todos los tests
-npm test
-
 # Ejecutar un ejemplo específico
 npx ts-node src/Patterns/factory/factory-good.ts
 npx ts-node src/Patterns/builder/builder-good.ts

@@ -1,7 +1,6 @@
 # 🎓 Clean Code, OOP, Principios SOLID y Patrones de Diseño en TypeScript
 
 Este proyecto presenta ejemplos prácticos de Clean Code, OOP, Principios SOLID y Patrones de Diseño usando TypeScript. Cada concepto incluye ejemplos "malos" (violando principios) y "buenos" (siguiendo buenas prácticas) para facilitar el aprendizaje.
----
 
 ## 📚 Contenido del proyecto
 
@@ -54,8 +53,9 @@ Soluciones probadas para problemas comunes de diseño:
 # Install dependencies
 npm install
 
-# Run tests
-npm run test
+    "@types/node": "^20.6.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
 
 ```
 
@@ -72,12 +72,12 @@ Cada carpeta incluye:
 
 1. Lee el README del concepto
 2. Ejecuta y analiza el ejemplo malo
-> npx ts-node src/OOP/abstraction/abstraction-bad.ts
+   > npx ts-node src/OOP/abstraction/abstraction-bad.ts
 3. Aplica los técnicas y principios aprendidos para refactoizar el ejemplo malo
 4. Ejecuta tu solución
-> npx ts-node src/OOP/abstraction/abstraction-exercise.ts
+   > npx ts-node src/OOP/abstraction/abstraction-exercise.ts
 5. Ejecuta y estudia el ejemplo bueno
-> npx ts-node src/OOP/abstraction/abstraction-good.ts
+   > npx ts-node src/OOP/abstraction/abstraction-good.ts
 
 ---
 
