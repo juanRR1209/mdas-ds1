@@ -22,9 +22,18 @@ class BankAccount {
   }
 
   // ❌ Método sin validaciones
-  public withdraw(amount: number): void {
+  public withdraw(amount: number): boolean {
+    if (amount > this.balance) {
+      return false;
+    }
     this.balance -= amount;
     this.transactionHistory.push(`Retiro: ${amount}`);
+    return true;
+  }
+
+  // Método getter básico (aunque no es la mejor solución)
+  public getBalance(): number {
+    return this.balance;
   }
 }
 

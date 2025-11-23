@@ -4,7 +4,7 @@ Este proyecto presenta ejemplos prácticos de Clean Code, OOP, Principios SOLID 
 
 ## 📚 Contenido del proyecto
 
-### ✨ 1. Clean Code (`CleanCode/`)
+### ✨ 1. Clean Code (`src/CleanCode/`)
 
 Principios de código limpio y legible:
 
@@ -12,7 +12,7 @@ Principios de código limpio y legible:
 - **Functions** - Funciones pequeñas y enfocadas (una responsabilidad)
 - **Format** - Formato horizontal y vertical consistente
 
-### 🎯 2. Programación Orientada a Objetos (`OOP/`)
+### 🎯 2. Programación Orientada a Objetos (`src/OOP/`)
 
 Los 4 pilares fundamentales de OOP:
 
@@ -21,7 +21,7 @@ Los 4 pilares fundamentales de OOP:
 - **Inheritance** - Herencia (reutilización de código)
 - **Polymorphism** - Polimorfismo (comportamiento específico sin condicionales)
 
-### 🔷 3. Principios SOLID (`SOLID/`)
+### 🔷 3. Principios SOLID (`src/SOLID/`)
 
 Los 5 principios fundamentales de diseño orientado a objetos:
 
@@ -31,7 +31,7 @@ Los 5 principios fundamentales de diseño orientado a objetos:
 - **I** - Interface Segregation Principle (ISP) - Segregación de Interfaces
 - **D** - Dependency Inversion Principle (DIP) - Inversión de Dependencias
 
-### 🏗️ 4. Patrones de Diseño (`Patterns/`)
+### 🏗️ 4. Patrones de Diseño (`src/Patterns/`)
 
 Soluciones probadas para problemas comunes de diseño:
 
@@ -63,7 +63,7 @@ javac --version  # Debe ser 11 o mayor
 
 ```bash
 # Compilar
-javac CleanCode/naming/NamingBad.java
+javac src/CleanCode/naming/NamingBad.java
 
 # Ejecutar
 java CleanCode.naming.NamingBad
@@ -96,18 +96,18 @@ gradle run
 cd katas/java
 
 # 2. Ejecutar ejemplo malo
-javac OOP/abstraction/AbstractionBad.java
+javac src/OOP/abstraction/AbstractionBad.java
 java OOP.abstraction.AbstractionBad
 
 # 3. Modificar el ejercicio
-code OOP/abstraction/AbstractionExercise.java
+code src/OOP/abstraction/AbstractionExercise.java
 
 # 4. Compilar y ejecutar tu solución
-javac OOP/abstraction/AbstractionExercise.java
+javac src/OOP/abstraction/AbstractionExercise.java
 java OOP.abstraction.AbstractionExercise
 
 # 5. Ver la solución
-javac OOP/abstraction/AbstractionGood.java
+javac src/OOP/abstraction/AbstractionGood.java
 java OOP.abstraction.AbstractionGood
 ```
 
@@ -125,18 +125,18 @@ Cada carpeta incluye:
 1. Lee el README del concepto
 2. Ejecuta y analiza el ejemplo malo
    ```bash
-   javac OOP/abstraction/AbstractionBad.java
+   javac src/OOP/abstraction/AbstractionBad.java
    java OOP.abstraction.AbstractionBad
    ```
 3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
 4. Ejecuta tu solución
    ```bash
-   javac OOP/abstraction/AbstractionExercise.java
+   javac src/OOP/abstraction/AbstractionExercise.java
    java OOP.abstraction.AbstractionExercise
    ```
 5. Ejecuta y estudia el ejemplo bueno
    ```bash
-   javac OOP/abstraction/AbstractionGood.java
+   javac src/OOP/abstraction/AbstractionGood.java
    java OOP.abstraction.AbstractionGood
    ```
 
@@ -144,7 +144,7 @@ Cada carpeta incluye:
 
 ```bash
 # Compilar todos los archivos de una carpeta
-javac CleanCode/naming/*.java
+javac src/CleanCode/naming/*.java
 
 # Ejecutar un archivo específico
 java CleanCode.naming.NamingGood
@@ -210,11 +210,11 @@ java -jar junit-platform-console-standalone-1.9.3.jar \
 
 ```bash
 # Compilar tests de un concepto específico
-cd CleanCode/naming
-javac -cp .:../../junit-platform-console-standalone-1.9.3.jar *.java
+cd src/CleanCode/naming
+javac -cp .:../../../junit-platform-console-standalone-1.9.3.jar *.java
 
 # Ejecutar tests
-java -jar ../../junit-platform-console-standalone-1.9.3.jar \
+java -jar ../../../junit-platform-console-standalone-1.9.3.jar \
   --class-path . \
   --select-class NamingTests
 
@@ -308,19 +308,19 @@ mvn test -Dtest=Patterns.**
 
 ```bash
 # Compilar un archivo
-javac CleanCode/naming/NamingGood.java
+javac src/CleanCode/naming/NamingGood.java
 
 # Ejecutar (nota el formato con paquetes)
 java CleanCode.naming.NamingGood
 
 # Compilar múltiples archivos
-javac CleanCode/naming/*.java
+javac src/CleanCode/naming/*.java
 
 # Ejecutar con classpath
 java -cp . CleanCode.naming.NamingGood
 
 # Compilar con warnings
-javac -Xlint:all CleanCode/naming/NamingGood.java
+javac -Xlint:all src/CleanCode/naming/NamingGood.java
 
 # Crear JAR
 jar cvf katas.jar CleanCode/**/*.class

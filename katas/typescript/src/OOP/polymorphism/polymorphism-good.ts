@@ -119,4 +119,33 @@ processor.processAnimals([fish]);
 // - Respeta Open/Closed Principle
 // - Fácil de mantener y escalar
 
-export { Animal, Dog, Cat, Bird, Fish, AnimalProcessor };
+// Payment classes for test compatibility
+abstract class Payment {
+  abstract process(amount: number): string;
+}
+
+class CreditCardPayment extends Payment {
+  public process(amount: number): string {
+    return `Procesando pago con Tarjeta de Crédito por $${amount}`;
+  }
+}
+
+class PayPalPayment extends Payment {
+  public process(amount: number): string {
+    return `Procesando pago con PayPal por $${amount}`;
+  }
+}
+
+class CryptoPayment extends Payment {
+  public process(amount: number): string {
+    return `Procesando pago con Criptomoneda por $${amount}`;
+  }
+}
+
+class PaymentProcessor {
+  public processPayment(payment: Payment, amount: number): string {
+    return payment.process(amount);
+  }
+}
+
+export { Animal, Dog, Cat, Bird, Fish, AnimalProcessor, Payment, CreditCardPayment, PayPalPayment, CryptoPayment, PaymentProcessor };

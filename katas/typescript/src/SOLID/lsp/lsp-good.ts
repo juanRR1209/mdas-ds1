@@ -100,4 +100,43 @@ console.log("Nadando:", makeSwimmableCreatureSwim(penguin));
 console.log("Nadando:", makeSwimmableCreatureSwim(duck));
 // ¡eagle no se le pide nadar - seguro en tiempo de compilación!
 
-export { Animal, Flyable, Swimmable, Eagle, Penguin, Duck, feedAnimal, makeFlyableCreatureFly, makeSwimmableCreatureSwim };
+// Rectangle and Square for test compatibility
+class Rectangle {
+  protected width: number;
+  protected height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public setWidth(width: number): void {
+    this.width = width;
+  }
+
+  public setHeight(height: number): void {
+    this.height = height;
+  }
+
+  public calculateArea(): number {
+    return this.width * this.height;
+  }
+}
+
+class Square {
+  private side: number;
+
+  constructor(side: number) {
+    this.side = side;
+  }
+
+  public setSide(side: number): void {
+    this.side = side;
+  }
+
+  public calculateArea(): number {
+    return this.side * this.side;
+  }
+}
+
+export { Animal, Flyable, Swimmable, Eagle, Penguin, Duck, feedAnimal, makeFlyableCreatureFly, makeSwimmableCreatureSwim, Rectangle, Square };

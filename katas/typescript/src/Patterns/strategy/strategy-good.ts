@@ -103,4 +103,43 @@ class StudentDiscount implements DiscountStrategy {
 calculator.setStrategy(new StudentDiscount());
 console.log(`${calculator.getDiscountInfo()}: $${calculator.calculateDiscount(orderAmount)}`);
 
-export { DiscountStrategy, RegularCustomerDiscount, PremiumCustomerDiscount, VIPCustomerDiscount, EmployeeDiscount, StudentDiscount, DiscountCalculator };
+// ShippingCalculator for test compatibility
+interface ShippingStrategy {
+  calculate(weight: number): number;
+}
+
+class StandardShipping implements ShippingStrategy {
+  public calculate(weight: number): number {
+    return weight + 5;
+  }
+}
+
+class ExpressShipping implements ShippingStrategy {
+  public calculate(weight: number): number {
+    return Math.round(weight * 1.1 * 100) / 100;
+  }
+}
+
+class OvernightShipping implements ShippingStrategy {
+  public calculate(weight: number): number {
+    return Math.round(weight * 1.2 * 100) / 100;
+  }
+}
+
+class ShippingCalculator {
+  private strategy: ShippingStrategy;
+
+  constructor(strategy: ShippingStrategy) {
+    this.strategy = strategy;
+  }
+
+  public setStrategy(strategy: ShippingStrategy): void {
+    this.strategy = strategy;
+  }
+
+  public calculateShipping(weight: number): number {
+    return this.strategy.calculate(weight);
+  }
+}
+
+export { DiscountStrategy, RegularCustomerDiscount, PremiumCustomerDiscount, VIPCustomerDiscount, EmployeeDiscount, StudentDiscount, DiscountCalculator, ShippingStrategy, StandardShipping, ExpressShipping, OvernightShipping, ShippingCalculator };

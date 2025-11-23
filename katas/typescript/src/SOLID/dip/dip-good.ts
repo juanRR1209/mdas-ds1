@@ -57,4 +57,35 @@ orderService1.processOrder("001");
 orderService2.processOrder("002");
 orderService3.processOrder("003");
 
-export { Database, MySQLDatabase, PostgreSQLDatabase, MongoDatabase, OrderService };
+// UserService for test compatibility
+interface User {
+  email: string;
+  name: string;
+}
+
+class UserService {
+  private database: Database;
+  private users: User[] = [];
+
+  constructor(database: Database) {
+    this.database = database;
+  }
+
+  public saveUser(email: string, name: string): string {
+    const user = { email, name };
+    this.users.push(user);
+    const dbType = this.database instanceof MySQLDatabase ? "MySQL" : this.database instanceof MongoDatabase ? "MongoDB" : "PostgreSQL";
+    const result = `Guardado en ${dbType}: ${email}`;
+    this.database.save(result);
+    return result;
+  }
+
+  public getUser(email: string): User | undefined {
+    return this.users.find((u) => u.email === email);
+  }
+}
+
+// Re-export MongoDatabase as MongoDBDatabase for backwards compatibility
+const MongoDBDatabase = MongoDatabase;
+
+export { Database, MySQLDatabase, PostgreSQLDatabase, MongoDatabase, MongoDBDatabase, OrderService, UserService };

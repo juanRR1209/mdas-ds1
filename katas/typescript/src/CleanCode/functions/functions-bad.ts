@@ -34,4 +34,10 @@ const processor = new UserScoreProcessor();
 processor.processUserScore(user, 50, 30);
 console.log("Puntaje final del usuario:", user.score);
 
-export { UserScoreProcessor };
+// Interfaz para el usuario
+interface User {
+  name: string;
+  score: number;
+}
+
+export { UserScoreProcessor, User };

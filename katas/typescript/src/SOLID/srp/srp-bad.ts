@@ -44,4 +44,21 @@ class User {
 // 3. La clase se vuelve grande y difícil de mantener
 // 4. Difícil de probar las responsabilidades individuales
 
-export { User };
+// UserManager for test compatibility
+class UserManager {
+  public createUser(email: string, name: string): boolean {
+    if (!this.isValidEmail(email)) {
+      return false;
+    }
+    if (!name || name.trim().length === 0) {
+      return false;
+    }
+    return true;
+  }
+
+  private isValidEmail(email: string): boolean {
+    return email.includes("@");
+  }
+}
+
+export { User, UserManager };

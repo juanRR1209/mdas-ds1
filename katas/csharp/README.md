@@ -4,7 +4,7 @@ Este proyecto presenta ejemplos prácticos de Clean Code, OOP, Principios SOLID 
 
 ## 📚 Contenido del proyecto
 
-### ✨ 1. Clean Code (`CleanCode/`)
+### ✨ 1. Clean Code (`src/CleanCode/`)
 
 Principios de código limpio y legible:
 
@@ -12,7 +12,7 @@ Principios de código limpio y legible:
 - **Functions** - Funciones pequeñas y enfocadas (una responsabilidad)
 - **Format** - Formato horizontal y vertical consistente
 
-### 🎯 2. Programación Orientada a Objetos (`OOP/`)
+### 🎯 2. Programación Orientada a Objetos (`src/OOP/`)
 
 Los 4 pilares fundamentales de OOP:
 
@@ -21,7 +21,7 @@ Los 4 pilares fundamentales de OOP:
 - **Inheritance** - Herencia (reutilización de código)
 - **Polymorphism** - Polimorfismo (comportamiento específico sin condicionales)
 
-### 🔷 3. Principios SOLID (`SOLID/`)
+### 🔷 3. Principios SOLID (`src/SOLID/`)
 
 Los 5 principios fundamentales de diseño orientado a objetos:
 
@@ -31,7 +31,7 @@ Los 5 principios fundamentales de diseño orientado a objetos:
 - **I** - Interface Segregation Principle (ISP) - Segregación de Interfaces
 - **D** - Dependency Inversion Principle (DIP) - Inversión de Dependencias
 
-### 🏗️ 4. Patrones de Diseño (`Patterns/`)
+### 🏗️ 4. Patrones de Diseño (`src/Patterns/`)
 
 Soluciones probadas para problemas comunes de diseño:
 
@@ -62,7 +62,7 @@ dotnet --version  # Debe ser 6.0 o mayor
 
 ```bash
 # Compilar
-csc CleanCode/naming/naming-bad.cs
+csc src/CleanCode/naming/naming-bad.cs
 
 # Ejecutar
 ./naming-bad.exe  # Windows
@@ -76,13 +76,13 @@ csc CleanCode/naming/naming-bad.cs
 dotnet tool install -g dotnet-script
 
 # Ejecutar
-dotnet script CleanCode/naming/naming-bad.cs
+dotnet script src/CleanCode/naming/naming-bad.cs
 ```
 
 **Opción 3: Usar dotnet run**
 
 ```bash
-dotnet run --project CleanCode/naming/naming-bad.cs
+dotnet run --project src/CleanCode/naming/naming-bad.cs
 ```
 
 ### Ejemplo Completo
@@ -92,16 +92,16 @@ dotnet run --project CleanCode/naming/naming-bad.cs
 cd katas/csharp
 
 # 2. Ejecutar ejemplo malo
-csc SOLID/srp/srp-bad.cs && ./srp-bad.exe
+csc src/SOLID/srp/srp-bad.cs && ./srp-bad.exe
 
 # 3. Modificar el ejercicio
-code SOLID/srp/srp-exercise.cs
+code src/SOLID/srp/srp-exercise.cs
 
 # 4. Ejecutar tu solución
-csc SOLID/srp/srp-exercise.cs && ./srp-exercise.exe
+csc src/SOLID/srp/srp-exercise.cs && ./srp-exercise.exe
 
 # 5. Ver la solución
-csc SOLID/srp/srp-good.cs && ./srp-good.exe
+csc src/SOLID/srp/srp-good.cs && ./srp-good.exe
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -118,32 +118,32 @@ Cada carpeta incluye:
 1. Lee el README del concepto
 2. Ejecuta y analiza el ejemplo malo
    ```bash
-   dotnet run --project OOP/abstraction/abstraction-bad.cs
+   dotnet run --project src/OOP/abstraction/abstraction-bad.cs
    # O compile y ejecute:
-   csc OOP/abstraction/abstraction-bad.cs && ./abstraction-bad.exe
+   csc src/OOP/abstraction/abstraction-bad.cs && ./abstraction-bad.exe
    ```
 3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
 4. Ejecuta tu solución
    ```bash
-   dotnet run --project OOP/abstraction/abstraction-exercise.cs
+   dotnet run --project src/OOP/abstraction/abstraction-exercise.cs
    ```
 5. Ejecuta y estudia el ejemplo bueno
    ```bash
-   dotnet run --project OOP/abstraction/abstraction-good.cs
+   dotnet run --project src/OOP/abstraction/abstraction-good.cs
    ```
 
 ### Ejecución de archivos individuales
 
 ```bash
 # Opción 1: Usando dotnet script (recomendado para ejemplos simples)
-dotnet script CleanCode/naming/naming-bad.cs
+dotnet script src/CleanCode/naming/naming-bad.cs
 
 # Opción 2: Compilar y ejecutar
-csc CleanCode/naming/naming-bad.cs
+csc src/CleanCode/naming/naming-bad.cs
 ./naming-bad.exe
 
 # Opción 3: Usar dotnet run con un archivo específico
-dotnet run --project CleanCode/naming/naming-bad.cs
+dotnet run --project src/CleanCode/naming/naming-bad.cs
 ```
 
 ## 🧪 Tests Unitarios
@@ -154,7 +154,7 @@ Cada concepto incluye tests unitarios completos usando **xUnit** para validar ta
 
 ```bash
 # Navegar a la carpeta del concepto
-cd CleanCode/naming
+cd src/CleanCode/naming
 
 # Crear proyecto de tests con xUnit
 dotnet new xunit -n NamingTests
@@ -184,19 +184,19 @@ dotnet test /p:CollectCoverage=true
 
 ```bash
 # Tests de Clean Code - Naming
-cd CleanCode/naming
+cd src/CleanCode/naming
 dotnet new xunit -n NamingTests
 # Agregar Tests.cs al proyecto
 dotnet test
 
 # Tests de SOLID - SRP
-cd SOLID/srp
+cd src/SOLID/srp
 dotnet new xunit -n SrpTests
 # Agregar Tests.cs al proyecto
 dotnet test
 
 # Tests de Patterns - Factory
-cd Patterns/factory
+cd src/Patterns/factory
 dotnet new xunit -n FactoryTests
 # Agregar Tests.cs al proyecto
 dotnet test
@@ -272,14 +272,14 @@ dotnet test
 
 ```bash
 # Compilar un archivo
-csc CleanCode/naming/naming-good.cs
+csc src/CleanCode/naming/naming-good.cs
 
 # Ejecutar
 ./naming-good.exe  # Windows
 ./naming-good      # Linux/Mac (con Mono)
 
 # Compilar con warnings
-csc /warn:4 CleanCode/naming/naming-good.cs
+csc /warn:4 src/CleanCode/naming/naming-good.cs
 
 # Crear proyecto de consola
 dotnet new console -n MiProyecto

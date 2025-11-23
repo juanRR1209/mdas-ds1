@@ -8,7 +8,7 @@ class Animal {
   protected age: number;
   protected weight: number;
 
-  constructor(name: string, age: number, weight: number) {
+  constructor(name: string, age: number, weight: number = 10) {
     this.name = name;
     this.age = age;
     this.weight = weight;
@@ -29,16 +29,18 @@ class Animal {
   }
 
   // ✅ Método para que cada hijo implemente su sonido
-  public makeSound(): void {
+  public makeSound(): string {
     console.log(`${this.name} hace un sonido`);
+    return `${this.name} hace un sonido`;
   }
 }
 
 // ✅ Dog hereda de Animal - sin duplicación
 class Dog extends Animal {
   // ✅ Solo comportamiento específico de perros
-  public makeSound(): void {
+  public makeSound(): string {
     console.log(`${this.name} dice: ¡Guau guau!`);
+    return "Guau guau";
   }
 
   public fetch(): void {
@@ -49,8 +51,9 @@ class Dog extends Animal {
 // ✅ Cat hereda de Animal - sin duplicación
 class Cat extends Animal {
   // ✅ Solo comportamiento específico de gatos
-  public makeSound(): void {
+  public makeSound(): string {
     console.log(`${this.name} dice: ¡Miau miau!`);
+    return "Miau miau";
   }
 
   public purr(): void {
@@ -61,8 +64,9 @@ class Cat extends Animal {
 // ✅ Bird hereda de Animal - sin duplicación
 class Bird extends Animal {
   // ✅ Solo comportamiento específico de pájaros
-  public makeSound(): void {
+  public makeSound(): string {
     console.log(`${this.name} dice: ¡Pío pío!`);
+    return "Pío pío";
   }
 
   public fly(): void {

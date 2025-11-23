@@ -48,4 +48,43 @@ try {
   console.log("ERROR:", (error as Error).message);
 }
 
-export { Bird, Penguin, Eagle, makeBirdFly };
+// Rectangle and Square for test compatibility
+class Rectangle {
+  protected width: number;
+  protected height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public setWidth(width: number): void {
+    this.width = width;
+  }
+
+  public setHeight(height: number): void {
+    this.height = height;
+  }
+
+  public calculateArea(): number {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Rectangle {
+  constructor(side: number) {
+    super(side, side);
+  }
+
+  public setWidth(width: number): void {
+    this.width = width;
+    this.height = width;
+  }
+
+  public setHeight(height: number): void {
+    this.width = height;
+    this.height = height;
+  }
+}
+
+export { Bird, Penguin, Eagle, makeBirdFly, Rectangle, Square };

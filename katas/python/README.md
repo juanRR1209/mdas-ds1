@@ -4,7 +4,7 @@ Este proyecto presenta ejemplos prácticos de Clean Code, OOP, Principios SOLID 
 
 ## 📚 Contenido del proyecto
 
-### ✨ 1. Clean Code (`CleanCode/`)
+### ✨ 1. Clean Code (`src/CleanCode/`)
 
 Principios de código limpio y legible:
 
@@ -12,7 +12,7 @@ Principios de código limpio y legible:
 - **Functions** - Funciones pequeñas y enfocadas (una responsabilidad)
 - **Format** - Formato horizontal y vertical consistente
 
-### 🎯 2. Programación Orientada a Objetos (`OOP/`)
+### 🎯 2. Programación Orientada a Objetos (`src/OOP/`)
 
 Los 4 pilares fundamentales de OOP:
 
@@ -21,7 +21,7 @@ Los 4 pilares fundamentales de OOP:
 - **Inheritance** - Herencia (reutilización de código)
 - **Polymorphism** - Polimorfismo (comportamiento específico sin condicionales)
 
-### 🔷 3. Principios SOLID (`SOLID/`)
+### 🔷 3. Principios SOLID (`src/SOLID/`)
 
 Los 5 principios fundamentales de diseño orientado a objetos:
 
@@ -31,7 +31,7 @@ Los 5 principios fundamentales de diseño orientado a objetos:
 - **I** - Interface Segregation Principle (ISP) - Segregación de Interfaces
 - **D** - Dependency Inversion Principle (DIP) - Inversión de Dependencias
 
-### 🏗️ 4. Patrones de Diseño (`Patterns/`)
+### 🏗️ 4. Patrones de Diseño (`src/Patterns/`)
 
 Soluciones probadas para problemas comunes de diseño:
 
@@ -70,9 +70,9 @@ source venv/bin/activate
 
 ```bash
 # Ejecutar cualquier archivo
-python CleanCode/naming/naming_bad.py
-python3 SOLID/srp/srp_good.py
-python Patterns/factory/factory_good.py
+python src/CleanCode/naming/naming_bad.py
+python3 src/SOLID/srp/srp_good.py
+python src/Patterns/factory/factory_good.py
 ```
 
 ### Ejemplo Completo
@@ -84,16 +84,16 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
 # 2. Ejecutar ejemplo malo
-python SOLID/dip/dip_bad.py
+python src/SOLID/dip/dip_bad.py
 
 # 3. Modificar el ejercicio
-code SOLID/dip/dip_exercise.py
+code src/SOLID/dip/dip_exercise.py
 
 # 4. Ejecutar tu solución
-python SOLID/dip/dip_exercise.py
+python src/SOLID/dip/dip_exercise.py
 
 # 5. Ver la solución
-python SOLID/dip/dip_good.py
+python src/SOLID/dip/dip_good.py
 
 # 6. Desactivar entorno virtual cuando termines
 deactivate
@@ -133,32 +133,32 @@ pytest -s
 
 ```bash
 # Tests de Clean Code - Naming
-pytest CleanCode/naming/test_naming.py -v
+pytest src/CleanCode/naming/test_naming.py -v
 
 # Tests de SOLID - SRP
-pytest SOLID/srp/test_srp.py -v
+pytest src/SOLID/srp/test_srp.py -v
 
 # Tests de Patterns - Factory
-pytest Patterns/factory/test_factory.py -v
+pytest src/Patterns/factory/test_factory.py -v
 
 # Tests de OOP - Encapsulation
-pytest OOP/encapsulation/test_encapsulation.py -v
+pytest src/OOP/encapsulation/test_encapsulation.py -v
 ```
 
 ### Ejecutar tests por categoría
 
 ```bash
 # Todos los tests de Clean Code
-pytest CleanCode/ -v
+pytest src/CleanCode/ -v
 
 # Todos los tests de SOLID
-pytest SOLID/ -v
+pytest src/SOLID/ -v
 
 # Todos los tests de Patterns
-pytest Patterns/ -v
+pytest src/Patterns/ -v
 
 # Todos los tests de OOP
-pytest OOP/ -v
+pytest src/OOP/ -v
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -174,12 +174,12 @@ Cada carpeta incluye:
 
 1. Lee el README del concepto
 2. Ejecuta y analiza el ejemplo malo
-   > python CleanCode/naming/naming_bad.py
+   > python src/CleanCode/naming/naming_bad.py
 3. Aplica los técnicas y principios aprendidos para refactorizar el ejemplo malo
 4. Ejecuta tu solución
-   > python CleanCode/naming/naming_exercise.py
+   > python src/CleanCode/naming/naming_exercise.py
 5. Ejecuta y estudia el ejemplo bueno
-   > python CleanCode/naming/naming_good.py
+   > python src/CleanCode/naming/naming_good.py
 
 ---
 
@@ -253,7 +253,7 @@ Cada carpeta incluye:
 
 ```bash
 # Ejecutar un ejemplo específico
-python CleanCode/naming/naming_good.py
+python src/CleanCode/naming/naming_good.py
 
 # Ejecutar tests con verbose y mostrar prints
 pytest -v -s

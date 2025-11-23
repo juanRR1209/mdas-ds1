@@ -10,6 +10,11 @@ class EmailSender {
   public connectionAttempts: number = 0;
   public lastError: string = "";
 
+  constructor(username: string, password: string) {
+    this.username = username;
+    this.password = password;
+  }
+
   // ❌ Usuario debe manejar todos los detalles de la conexión
   public connectToServer(): boolean {
     console.log(`Conectando a ${this.smtpServer}:${this.smtpPort}...`);
@@ -55,15 +60,25 @@ class EmailSender {
     console.log("Desconectando del servidor...");
     this.isConnected = false;
   }
+
+  // High-level method that combines all steps (for test compatibility)
+  public sendEmail(to: string, subject: string, body: string): boolean {
+    if (!this.connectToServer()) {
+      return false;
+    }
+    const message = this.buildMessage(to, subject, body);
+    const result = this.sendRawMessage(message);
+    this.disconnectFromServer();
+    return result;
+  }
 }
 
 // ❌ Usuario debe conocer TODOS los pasos internos
 console.log("=== Violación de Abstracción ===");
 
-const emailSender = new EmailSender();
+const emailSender = new EmailSender("usuario@gmail.com", "password123");
 
 // ❌ Muchos pasos manuales y conocimiento de detalles internos
-emailSender.authenticate("usuario@gmail.com", "password123");
 emailSender.connectToServer();
 
 const message = emailSender.buildMessage("destinatario@gmail.com", "Hola", "Este es el cuerpo del mensaje");

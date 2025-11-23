@@ -49,4 +49,25 @@ console.log(robot.work()); // ✅ Funciona
 // console.log(robot.eat());   // ❌ ¡Lanza error!
 // console.log(robot.sleep()); // ❌ ¡Lanza error!
 
-export { Worker, Human, Robot };
+// Printer and Scanner for test compatibility
+class Printer {
+  public print(document: string): string {
+    return `Imprimiendo documento: ${document}`;
+  }
+
+  public scan(): string {
+    throw new Error("¡Esta impresora no puede escanear!");
+  }
+}
+
+class Scanner {
+  public scan(): string {
+    return "Escaneando documento...";
+  }
+
+  public print(document: string): string {
+    throw new Error("¡Este escáner no puede imprimir!");
+  }
+}
+
+export { Worker, Human, Robot, Printer, Scanner };

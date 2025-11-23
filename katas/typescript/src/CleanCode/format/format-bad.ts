@@ -82,4 +82,30 @@ console.log(product);
 const processor = new OrderProcessor();
 processor.processOrder(1, [{ price: 100, quantity: 2 }], "credit_card");
 
-export { ProductService, OrderProcessor, UserManager };
+// ShoppingCart for test compatibility
+interface Product {
+  name: string;
+  price: number;
+  category: string;
+}
+
+class ShoppingCart {
+  public calculateTotal(products: Product[]): number {
+    return products.reduce((sum, product) => sum + product.price, 0);
+  }
+
+  public applyDiscount(total: number, discountRate: number): number {
+    return total - total * discountRate;
+  }
+
+  public formatReceipt(products: Product[], total: number): string {
+    let receipt = "=== RECIBO ===\n";
+    products.forEach((product) => {
+      receipt += `${product.name}: $${product.price}\n`;
+    });
+    receipt += `Total: $${total}`;
+    return receipt;
+  }
+}
+
+export { ProductService, OrderProcessor, UserManager, Product, ShoppingCart };

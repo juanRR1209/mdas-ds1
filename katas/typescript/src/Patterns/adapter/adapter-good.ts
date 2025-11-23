@@ -97,4 +97,57 @@ class FLACAdapter implements AudioPlayer {
   }
 }
 
-export { AudioPlayer, MP3Player, WAVPlayer, MP3Adapter, WAVAdapter, FLACPlayer, FLACAdapter, MediaPlayer };
+// Payment interfaces and adapters for test compatibility
+interface PaymentGateway {
+  pay(amount: number): string;
+}
+
+class StripeService {
+  public processStripePayment(amount: number): string {
+    return `Procesando pago con Stripe por $${amount}`;
+  }
+}
+
+class PayPalService {
+  public executePayPalPayment(amount: number): string {
+    return `Procesando pago con PayPal por $${amount}`;
+  }
+}
+
+class StripeAdapter implements PaymentGateway {
+  private stripe: StripeService;
+
+  constructor() {
+    this.stripe = new StripeService();
+  }
+
+  public pay(amount: number): string {
+    return this.stripe.processStripePayment(amount);
+  }
+}
+
+class PayPalAdapter implements PaymentGateway {
+  private paypal: PayPalService;
+
+  constructor() {
+    this.paypal = new PayPalService();
+  }
+
+  public pay(amount: number): string {
+    return this.paypal.executePayPalPayment(amount);
+  }
+}
+
+class PaymentProcessor {
+  private gateway: PaymentGateway;
+
+  constructor(gateway: PaymentGateway) {
+    this.gateway = gateway;
+  }
+
+  public processPayment(amount: number): string {
+    return this.gateway.pay(amount);
+  }
+}
+
+export { AudioPlayer, MP3Player, WAVPlayer, MP3Adapter, WAVAdapter, FLACPlayer, FLACAdapter, MediaPlayer, PaymentGateway, StripeAdapter, PayPalAdapter, PaymentProcessor };

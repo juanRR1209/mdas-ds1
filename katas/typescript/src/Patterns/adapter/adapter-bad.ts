@@ -40,4 +40,17 @@ const player = new MediaPlayer();
 console.log(player.playAudio("mp3", "cancion.mp3"));
 console.log(player.playAudio("wav", "sonido.wav"));
 
-export { MP3Player, WAVPlayer, MediaPlayer };
+// Payment processor for test compatibility
+class PaymentProcessor {
+  public processPayment(type: string, amount: number): string {
+    if (type === "stripe") {
+      return `Procesando pago con Stripe por $${amount}`;
+    } else if (type === "paypal") {
+      return `Procesando pago con PayPal por $${amount}`;
+    } else {
+      throw new Error(`Tipo de pago no soportado: ${type}`);
+    }
+  }
+}
+
+export { MP3Player, WAVPlayer, MediaPlayer, PaymentProcessor };

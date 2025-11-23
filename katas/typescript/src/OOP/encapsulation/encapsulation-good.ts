@@ -45,8 +45,7 @@ class BankAccount {
       return false;
     }
     if (amount <= 0) {
-      console.log("Error: El monto debe ser positivo");
-      return false;
+      throw new Error("El monto debe ser positivo");
     }
 
     this.balance += amount;

@@ -1,7 +1,12 @@
 // Cumplimiento del SRP: Cada clase tiene una única responsabilidad
 // Solución: Clases separadas para diferentes responsabilidades
 
-class User {
+interface User {
+  name: string;
+  email: string;
+}
+
+class UserClass implements User {
   public name: string;
   public email: string;
 
@@ -22,19 +27,20 @@ class User {
 
 // Clase separada para operaciones de email ✅
 class EmailService {
-  public sendWelcomeEmail(user: User): string {
-    return `Enviando email de bienvenida a ${user.getEmail()}`;
+  public sendWelcomeEmail(email: string): boolean {
+    console.log(`Enviando email de bienvenida a ${email}`);
+    return true;
   }
 
-  public sendPasswordResetEmail(user: User): string {
-    return `Enviando email de restablecimiento de contraseña a ${user.getEmail()}`;
+  public sendPasswordResetEmail(email: string): string {
+    return `Enviando email de restablecimiento de contraseña a ${email}`;
   }
 }
 
 // Clase separada para operaciones de archivos ✅
 class UserFileManager {
   public saveToFile(user: User): string {
-    return `Guardando usuario ${user.getName()} en archivo`;
+    return `Guardando usuario ${user.name} en archivo`;
   }
 
   public loadFromFile(fileName: string): string {
@@ -43,12 +49,12 @@ class UserFileManager {
 }
 
 // Ejemplo de uso
-const user = new User("Juan Pérez", "juan@ejemplo.com");
+const user: User = { name: "Juan Pérez", email: "juan@ejemplo.com" };
 const emailService = new EmailService();
 const fileManager = new UserFileManager();
 
 // Cada servicio maneja su propia responsabilidad
-emailService.sendWelcomeEmail(user);
+emailService.sendWelcomeEmail(user.email);
 fileManager.saveToFile(user);
 
 // Beneficios:
@@ -57,4 +63,26 @@ fileManager.saveToFile(user);
 // 3. Se pueden reutilizar servicios para diferentes tipos de usuario
 // 4. El código está más organizado y es más mantenible
 
-export { User, EmailService, UserFileManager };
+class UserRepository {
+  private users: User[] = [];
+
+  public save(user: User): void {
+    this.users.push(user);
+  }
+
+  public findByEmail(email: string): User | undefined {
+    return this.users.find((u) => u.email === email);
+  }
+}
+
+class UserValidator {
+  public isValidEmail(email: string): boolean {
+    return email.includes("@");
+  }
+
+  public isValidName(name: string): boolean {
+    return name.trim().length > 0;
+  }
+}
+
+export { User, EmailService, UserFileManager, UserRepository, UserValidator };

@@ -64,4 +64,35 @@ console.log(robot.work()); // ✅ Funciona
 console.log(superHuman.work()); // ✅ Funciona
 console.log(superHuman.sleep()); // ✅ Funciona
 
-export { Workable, Eatable, Sleepable, Human, Robot, SuperHuman };
+// Printer and Scanner for test compatibility
+interface Printable {
+  print(document: string): string;
+}
+
+interface Scannable {
+  scan(): string;
+}
+
+class SimplePrinter implements Printable {
+  public print(document: string): string {
+    return `Imprimiendo documento: ${document}`;
+  }
+}
+
+class AdvancedPrinter implements Printable, Scannable {
+  public print(document: string): string {
+    return `Imprimiendo documento: ${document}`;
+  }
+
+  public scan(): string {
+    return "Escaneando documento...";
+  }
+}
+
+class SimpleScanner implements Scannable {
+  public scan(): string {
+    return "Escaneando documento...";
+  }
+}
+
+export { Workable, Eatable, Sleepable, Human, Robot, SuperHuman, Printable, Scannable, SimplePrinter, AdvancedPrinter, SimpleScanner };

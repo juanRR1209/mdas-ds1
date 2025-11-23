@@ -7,7 +7,7 @@ class Dog {
   private age: number;
   private weight: number;
 
-  constructor(name: string, age: number, weight: number) {
+  constructor(name: string, age: number, weight: number = 10) {
     this.name = name;
     this.age = age;
     this.weight = weight;
@@ -28,8 +28,9 @@ class Dog {
   }
 
   // Método específico
-  public bark(): void {
+  public makeSound(): string {
     console.log(`${this.name} dice: ¡Guau guau!`);
+    return "Guau guau";
   }
 }
 
@@ -39,7 +40,7 @@ class Cat {
   private age: number;
   private weight: number;
 
-  constructor(name: string, age: number, weight: number) {
+  constructor(name: string, age: number, weight: number = 5) {
     this.name = name;
     this.age = age;
     this.weight = weight;
@@ -60,8 +61,9 @@ class Cat {
   }
 
   // Método específico
-  public meow(): void {
+  public makeSound(): string {
     console.log(`${this.name} dice: ¡Miau miau!`);
+    return "Miau miau";
   }
 }
 
@@ -106,11 +108,11 @@ const bird = new Bird("Piolín", 1, 0.5);
 
 console.log(dog.getInfo());
 dog.eat();
-dog.bark();
+dog.makeSound();
 
 console.log(cat.getInfo());
 cat.eat();
-cat.meow();
+cat.makeSound();
 
 console.log(bird.getInfo());
 bird.eat();

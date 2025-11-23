@@ -61,4 +61,11 @@ const user = { age: 20, status: "ACT", points: 1200 };
 console.log("Usuario válido:", service.validateUser(user));
 console.log("Descuento:", service.calculateDiscount(100, "VIP"));
 
-export { UserService };
+// Interfaz para el usuario
+interface User {
+  age: number;
+  status: string;
+  points: number;
+}
+
+export { UserService, User };

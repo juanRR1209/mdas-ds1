@@ -64,4 +64,33 @@ console.log(communication.communicate(duck)); // "quack quack"
 const allAnimals = [dog, cat, fox, cow, duck];
 console.log(communication.communicateMultiple(allAnimals));
 
-export { Communicable, Dog, Cat, Fox, Cow, Duck, Communication };
+// DiscountCalculator for test compatibility
+interface DiscountStrategy {
+  calculate(amount: number): number;
+}
+
+class RegularCustomerDiscount implements DiscountStrategy {
+  public calculate(amount: number): number {
+    return amount * 0.05;
+  }
+}
+
+class VIPCustomerDiscount implements DiscountStrategy {
+  public calculate(amount: number): number {
+    return amount * 0.2;
+  }
+}
+
+class NewCustomerDiscount implements DiscountStrategy {
+  public calculate(amount: number): number {
+    return amount * 0.1;
+  }
+}
+
+class DiscountCalculator {
+  public calculateDiscount(amount: number, strategy: DiscountStrategy): number {
+    return strategy.calculate(amount);
+  }
+}
+
+export { Communicable, Dog, Cat, Fox, Cow, Duck, Communication, DiscountStrategy, RegularCustomerDiscount, VIPCustomerDiscount, NewCustomerDiscount, DiscountCalculator };

@@ -3,26 +3,31 @@
 
 class Pizza {
   public size: string;
-  public crust: string;
-  public sauce: string;
-  public cheese: string;
-  public toppings: string[];
-  public extraCheese: boolean;
-  public spicyLevel: number;
+  public hasCheese: boolean;
+  public hasPepperoni: boolean;
+  public hasOlives: boolean;
+  public hasMushrooms: boolean;
 
   // ❌ ¡Constructor telescópico - demasiados parámetros!
-  constructor(size: string, crust: string, sauce: string, cheese: string, toppings: string[], extraCheese: boolean, spicyLevel: number) {
+  constructor(size: string, hasCheese: boolean, hasPepperoni: boolean, hasOlives: boolean, hasMushrooms: boolean) {
     this.size = size;
-    this.crust = crust;
-    this.sauce = sauce;
-    this.cheese = cheese;
-    this.toppings = toppings;
-    this.extraCheese = extraCheese;
-    this.spicyLevel = spicyLevel;
+    this.hasCheese = hasCheese;
+    this.hasPepperoni = hasPepperoni;
+    this.hasOlives = hasOlives;
+    this.hasMushrooms = hasMushrooms;
   }
 
-  public getDescription(): string {
-    return `Pizza ${this.size} con masa ${this.crust}, salsa ${this.sauce}, queso ${this.cheese}, ingredientes: ${this.toppings.join(", ")}${this.extraCheese ? ", queso extra" : ""}, nivel picante: ${this.spicyLevel}/5`;
+  public describe(): string {
+    let description = `Pizza ${this.size}`;
+    const toppings = [];
+    if (this.hasCheese) toppings.push("queso");
+    if (this.hasPepperoni) toppings.push("pepperoni");
+    if (this.hasMushrooms) toppings.push("champiñones");
+    if (this.hasOlives) toppings.push("aceitunas");
+    if (toppings.length > 0) {
+      description += ` con ${toppings.join(", ")}`;
+    }
+    return description;
   }
 }
 
@@ -30,20 +35,12 @@ class Pizza {
 console.log("=== Violación del Patrón Builder ===");
 
 // Difícil recordar el orden de los parámetros ❌
-const margherita = new Pizza(
-  "grande",
-  "delgada",
-  "tomate",
-  "mozzarella",
-  ["albahaca", "tomates"], // ❌ Debe crear array manualmente
-  false, // ❌ ¿Qué significa este booleano?
-  0 // ❌ ¿Y este número?
-);
+const margherita = new Pizza("grande", true, false, false, false);
 
 // Orden de parámetros confuso ❌
-const carnivora = new Pizza("extra grande", "gruesa", "BBQ", "mozzarella", ["pepperoni", "salchicha", "tocino", "jamón"], true, 3);
+const carnivora = new Pizza("extra grande", true, true, false, false);
 
-console.log("Margherita:", margherita.getDescription());
-console.log("Carnívora:", carnivora.getDescription());
+console.log("Margherita:", margherita.describe());
+console.log("Carnívora:", carnivora.describe());
 
 export { Pizza };

@@ -81,4 +81,18 @@ animals.forEach((animal) => {
 // - Viola Open/Closed Principle
 // - Difícil de mantener y escalar
 
-export { AnimalData, DogData, CatData, BirdData, AnimalProcessor };
+// Payment processor class for test compatibility
+class PaymentProcessor {
+  public processPayment(type: string, amount: number): string {
+    if (type === "credit_card") {
+      return `Procesando pago con Tarjeta de Crédito por $${amount}`;
+    } else if (type === "paypal") {
+      return `Procesando pago con PayPal por $${amount}`;
+    } else if (type === "crypto") {
+      return `Procesando pago con Criptomoneda por $${amount}`;
+    }
+    return `Tipo de pago desconocido`;
+  }
+}
+
+export { AnimalData, DogData, CatData, BirdData, AnimalProcessor, PaymentProcessor };

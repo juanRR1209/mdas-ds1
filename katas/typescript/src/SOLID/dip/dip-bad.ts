@@ -33,4 +33,31 @@ const database = new MySQLDatabase();
 const orderService = new OrderService(database);
 orderService.processOrder("12345");
 
-export { MySQLDatabase, OrderService };
+// UserService for test compatibility
+interface User {
+  email: string;
+  name: string;
+}
+
+class UserService {
+  private database: MySQLDatabase;
+  private users: User[] = [];
+
+  constructor() {
+    this.database = new MySQLDatabase();
+  }
+
+  public saveUser(email: string, name: string): string {
+    const user = { email, name };
+    this.users.push(user);
+    const result = `Guardado en MySQL: ${email}`;
+    this.database.save(result);
+    return result;
+  }
+
+  public getUser(email: string): User | undefined {
+    return this.users.find((u) => u.email === email);
+  }
+}
+
+export { MySQLDatabase, OrderService, UserService };

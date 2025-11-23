@@ -4,7 +4,7 @@ Este proyecto presenta ejemplos prácticos de Clean Code, OOP, Principios SOLID 
 
 ## 📚 Contenido del proyecto
 
-### ✨ 1. Clean Code (`CleanCode/`)
+### ✨ 1. Clean Code (`src/CleanCode/`)
 
 Principios de código limpio y legible:
 
@@ -12,7 +12,7 @@ Principios de código limpio y legible:
 - **Functions** - Funciones pequeñas y enfocadas (una responsabilidad)
 - **Format** - Formato horizontal y vertical consistente
 
-### 🎯 2. Programación Orientada a Objetos (`OOP/`)
+### 🎯 2. Programación Orientada a Objetos (`src/OOP/`)
 
 Los 4 pilares fundamentales de OOP:
 
@@ -21,7 +21,7 @@ Los 4 pilares fundamentales de OOP:
 - **Inheritance** - Herencia (reutilización de código)
 - **Polymorphism** - Polimorfismo (comportamiento específico sin condicionales)
 
-### 🔷 3. Principios SOLID (`SOLID/`)
+### 🔷 3. Principios SOLID (`src/SOLID/`)
 
 Los 5 principios fundamentales de diseño orientado a objetos:
 
@@ -31,7 +31,7 @@ Los 5 principios fundamentales de diseño orientado a objetos:
 - **I** - Interface Segregation Principle (ISP) - Segregación de Interfaces
 - **D** - Dependency Inversion Principle (DIP) - Inversión de Dependencias
 
-### 🏗️ 4. Patrones de Diseño (`Patterns/`)
+### 🏗️ 4. Patrones de Diseño (`src/Patterns/`)
 
 Soluciones probadas para problemas comunes de diseño:
 
@@ -60,9 +60,9 @@ php --version  # Debe ser 8.0 o mayor
 
 ```bash
 # Ejecutar cualquier archivo directamente
-php CleanCode/naming/naming-bad.php
-php SOLID/srp/srp-good.php
-php Patterns/factory/factory-good.php
+php src/CleanCode/naming/naming-bad.php
+php src/SOLID/srp/srp-good.php
+php src/Patterns/factory/factory-good.php
 ```
 
 ### Ejemplo Completo
@@ -72,16 +72,16 @@ php Patterns/factory/factory-good.php
 cd katas/php
 
 # 2. Ejecutar ejemplo malo
-php Patterns/builder/builder-bad.php
+php src/Patterns/builder/builder-bad.php
 
 # 3. Modificar el ejercicio
-code Patterns/builder/builder-exercise.php
+code src/Patterns/builder/builder-exercise.php
 
 # 4. Ejecutar tu solución
-php Patterns/builder/builder-exercise.php
+php src/Patterns/builder/builder-exercise.php
 
 # 5. Ver la solución
-php Patterns/builder/builder-good.php
+php src/Patterns/builder/builder-good.php
 ```
 
 ### Con Composer (Opcional)
@@ -108,12 +108,12 @@ Cada carpeta incluye:
 
 1. Lee el README del concepto
 2. Ejecuta y analiza el ejemplo malo
-   > php CleanCode/naming/naming-bad.php
+   > php src/CleanCode/naming/naming-bad.php
 3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
 4. Ejecuta tu solución
-   > php CleanCode/naming/naming-exercise.php
+   > php src/CleanCode/naming/naming-exercise.php
 5. Ejecuta y estudia el ejemplo bueno
-   > php CleanCode/naming/naming-good.php
+   > php src/CleanCode/naming/naming-good.php
 
 ## 🧪 Tests Unitarios
 
@@ -165,32 +165,32 @@ vendor/bin/phpunit --coverage-html coverage .
 
 ```bash
 # Tests de Clean Code - Naming
-vendor/bin/phpunit CleanCode/naming/Tests.php
+vendor/bin/phpunit src/CleanCode/naming/Tests.php
 
 # Tests de SOLID - SRP
-vendor/bin/phpunit SOLID/srp/Tests.php
+vendor/bin/phpunit src/SOLID/srp/Tests.php
 
 # Tests de Patterns - Factory
-vendor/bin/phpunit Patterns/factory/Tests.php
+vendor/bin/phpunit src/Patterns/factory/Tests.php
 
 # Tests de OOP - Encapsulation
-vendor/bin/phpunit OOP/encapsulation/Tests.php
+vendor/bin/phpunit src/OOP/encapsulation/Tests.php
 ```
 
 ### Ejecutar tests por categoría
 
 ```bash
 # Todos los tests de Clean Code
-vendor/bin/phpunit CleanCode/
+vendor/bin/phpunit src/CleanCode/
 
 # Todos los tests de SOLID
-vendor/bin/phpunit SOLID/
+vendor/bin/phpunit src/SOLID/
 
 # Todos los tests de Patterns
-vendor/bin/phpunit Patterns/
+vendor/bin/phpunit src/Patterns/
 
 # Todos los tests de OOP
-vendor/bin/phpunit OOP/
+vendor/bin/phpunit src/OOP/
 ```
 
 ### Configuración de PHPUnit (phpunit.xml)
@@ -204,16 +204,16 @@ Puedes crear un archivo `phpunit.xml` en la raíz para configurar PHPUnit:
          verbose="true">
     <testsuites>
         <testsuite name="CleanCode">
-            <directory>CleanCode</directory>
+            <directory>src/CleanCode</directory>
         </testsuite>
         <testsuite name="OOP">
-            <directory>OOP</directory>
+            <directory>src/OOP</directory>
         </testsuite>
         <testsuite name="SOLID">
-            <directory>SOLID</directory>
+            <directory>src/SOLID</directory>
         </testsuite>
         <testsuite name="Patterns">
-            <directory>Patterns</directory>
+            <directory>src/Patterns</directory>
         </testsuite>
     </testsuites>
 </phpunit>
@@ -289,10 +289,10 @@ Puedes crear un archivo `phpunit.xml` en la raíz para configurar PHPUnit:
 
 ```bash
 # Ejecutar un archivo
-php CleanCode/naming/naming-good.php
+php src/CleanCode/naming/naming-good.php
 
 # Verificar sintaxis sin ejecutar
-php -l CleanCode/naming/naming-good.php
+php -l src/CleanCode/naming/naming-good.php
 
 # Ejecutar en servidor integrado
 php -S localhost:8000

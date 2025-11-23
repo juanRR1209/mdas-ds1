@@ -4,93 +4,76 @@
 // Clase Pizza con muchas propiedades opcionales
 class Pizza {
   public size: string;
-  public crust: string;
-  public sauce: string;
-  public cheese: string;
-  public toppings: string[];
-  public extraCheese: boolean;
-  public spicyLevel: number;
+  public hasCheese: boolean;
+  public hasPepperoni: boolean;
+  public hasOlives: boolean;
+  public hasMushrooms: boolean;
 
-  constructor(size: string, crust: string, sauce: string, cheese: string, toppings: string[], extraCheese: boolean, spicyLevel: number) {
+  constructor(size: string, hasCheese: boolean, hasPepperoni: boolean, hasOlives: boolean, hasMushrooms: boolean) {
     this.size = size;
-    this.crust = crust;
-    this.sauce = sauce;
-    this.cheese = cheese;
-    this.toppings = toppings;
-    this.extraCheese = extraCheese;
-    this.spicyLevel = spicyLevel;
+    this.hasCheese = hasCheese;
+    this.hasPepperoni = hasPepperoni;
+    this.hasOlives = hasOlives;
+    this.hasMushrooms = hasMushrooms;
   }
 
-  public getDescription(): string {
-    return `Pizza ${this.size} con masa ${this.crust}, salsa ${this.sauce}, queso ${this.cheese}, ingredientes: ${this.toppings.join(", ")}${this.extraCheese ? ", queso extra" : ""}, nivel picante: ${this.spicyLevel}/5`;
+  public describe(): string {
+    let description = `Pizza ${this.size}`;
+    const toppings = [];
+    if (this.hasCheese) toppings.push("queso");
+    if (this.hasPepperoni) toppings.push("pepperoni");
+    if (this.hasMushrooms) toppings.push("champiñones");
+    if (this.hasOlives) toppings.push("aceitunas");
+    if (toppings.length > 0) {
+      description += ` con ${toppings.join(", ")}`;
+    }
+    return description;
   }
 }
 
 // ✅ Builder con interfaz fluida
 class PizzaBuilder {
   private size: string = "mediana";
-  private crust: string = "regular";
-  private sauce: string = "tomate";
-  private cheese: string = "mozzarella";
-  private toppings: string[] = [];
-  private extraCheese: boolean = false;
-  private spicyLevel: number = 0;
+  private hasCheese: boolean = false;
+  private hasPepperoni: boolean = false;
+  private hasMushrooms: boolean = false;
+  private hasOlives: boolean = false;
 
   public setSize(size: string): PizzaBuilder {
     this.size = size;
     return this; // ✅ Retorna 'this' para encadenamiento de métodos
   }
 
-  public setCrust(crust: string): PizzaBuilder {
-    this.crust = crust;
+  public addCheese(): PizzaBuilder {
+    this.hasCheese = true;
     return this;
   }
 
-  public setSauce(sauce: string): PizzaBuilder {
-    this.sauce = sauce;
+  public addPepperoni(): PizzaBuilder {
+    this.hasPepperoni = true;
     return this;
   }
 
-  public setCheese(cheese: string): PizzaBuilder {
-    this.cheese = cheese;
+  public addMushrooms(): PizzaBuilder {
+    this.hasMushrooms = true;
     return this;
   }
 
-  public addTopping(topping: string): PizzaBuilder {
-    this.toppings.push(topping);
-    return this;
-  }
-
-  public withExtraCheese(): PizzaBuilder {
-    this.extraCheese = true;
-    return this;
-  }
-
-  public setSpicyLevel(level: number): PizzaBuilder {
-    this.spicyLevel = level;
+  public addOlives(): PizzaBuilder {
+    this.hasOlives = true;
     return this;
   }
 
   public build(): Pizza {
-    return new Pizza(
-      this.size,
-      this.crust,
-      this.sauce,
-      this.cheese,
-      [...this.toppings], // Copia el array
-      this.extraCheese,
-      this.spicyLevel
-    );
+    return new Pizza(this.size, this.hasCheese, this.hasPepperoni, this.hasOlives, this.hasMushrooms);
   }
 
   public reset(): PizzaBuilder {
     this.size = "mediana";
-    this.crust = "regular";
-    this.sauce = "tomate";
-    this.cheese = "mozzarella";
-    this.toppings = [];
-    this.extraCheese = false;
-    this.spicyLevel = 0;
+    this.hasCheese = false;
+    this.hasPepperoni = false;
+    this.hasMushrooms = false;
+    this.hasOlives = false;
     return this;
   }
 }
@@ -101,31 +84,17 @@ console.log("=== Solución con Patrón Builder ===");
 // Código legible y auto-documentado ✅
 const margherita = new PizzaBuilder()
   .setSize("grande") // ✅ Claro qué es cada parámetro
-  .setCrust("delgada")
-  .setSauce("tomate")
-  .setCheese("mozzarella")
-  .addTopping("albahaca") // ✅ Fácil agregar ingredientes uno por uno
-  .addTopping("tomates")
+  .addCheese()
   .build();
 
 // Fácil crear variaciones complejas ✅
-const carnivora = new PizzaBuilder()
-  .setSize("extra grande")
-  .setCrust("gruesa")
-  .setSauce("BBQ")
-  .addTopping("pepperoni")
-  .addTopping("salchicha")
-  .addTopping("tocino")
-  .addTopping("jamón")
-  .withExtraCheese() // ✅ Características opcionales cuando se necesitan
-  .setSpicyLevel(3)
-  .build();
+const carnivora = new PizzaBuilder().setSize("extra grande").addCheese().addPepperoni().build();
 
 // Configuración mínima con valores por defecto ✅
-const pizzaSimple = new PizzaBuilder().setSize("pequeña").addTopping("champiñones").build(); // ✅ Usa masa, salsa y queso por defecto
+const pizzaSimple = new PizzaBuilder().setSize("pequeña").addMushrooms().build();
 
-console.log("Margherita:", margherita.getDescription());
-console.log("Carnívora:", carnivora.getDescription());
-console.log("Pizza Simple:", pizzaSimple.getDescription());
+console.log("Margherita:", margherita.describe());
+console.log("Carnívora:", carnivora.describe());
+console.log("Pizza Simple:", pizzaSimple.describe());
 
 export { Pizza, PizzaBuilder };

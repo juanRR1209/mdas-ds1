@@ -50,4 +50,18 @@ console.log(communication.communicate(fox)); // "ring-ding-ding-ding-dingeringed
 // 2. Modificar el tipo de parámetro en communicate() ❌
 // 3. Agregar una nueva rama if/else ❌
 
-export { Dog, Cat, Fox, Communication };
+// DiscountCalculator for test compatibility
+class DiscountCalculator {
+  public calculateDiscount(amount: number, customerType: string): number {
+    if (customerType === "regular") {
+      return amount * 0.05;
+    } else if (customerType === "vip") {
+      return amount * 0.2;
+    } else if (customerType === "new") {
+      return amount * 0.1;
+    }
+    return 0;
+  }
+}
+
+export { Dog, Cat, Fox, Communication, DiscountCalculator };
