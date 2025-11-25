@@ -42,45 +42,12 @@ Soluciones probadas para problemas comunes de diseño:
 
 ## 🚀 Preparativos
 
-### Prerequisitos - Instalación desde cero
+### 1. Instalar JDK y Maven
 
-#### 1. Instalar JDK (Java Development Kit)
-
-**Windows:**
+**Windows (Chocolatey):**
 
 ```bash
-# Opción A: Usando Chocolatey (recomendado)
 choco install openjdk11 -y
-# O para la última versión LTS:
-choco install openjdk -y
-
-# Opción B: Descarga manual desde:
-# https://adoptium.net/
-```
-
-**Linux/macOS:**
-
-```bash
-# Ubuntu/Debian
-sudo apt update
-sudo apt install openjdk-11-jdk -y
-
-# macOS (Homebrew)
-brew install openjdk@11
-```
-
-**Verificar instalación:**
-
-```bash
-java --version   # Debe mostrar 11 o mayor
-javac --version  # Compilador de Java
-```
-
-#### 2. Instalar Maven (para gestión de dependencias y tests)
-
-**Windows:**
-
-```bash
 choco install maven -y
 ```
 
@@ -88,83 +55,27 @@ choco install maven -y
 
 ```bash
 # Ubuntu/Debian
-sudo apt install maven -y
+sudo apt update
+sudo apt install openjdk-11-jdk maven -y
 
 # macOS (Homebrew)
-brew install maven
+brew install openjdk@11 maven
 ```
 
-**Verificar instalación:**
+**Verificar:**
 
 ```bash
+java --version   # Debe mostrar 11+
+javac --version
 mvn --version
 ```
 
-#### 3. Configurar el proyecto
+### 2. Ejecutar ejemplos
 
 ```bash
-# Navegar a la carpeta del proyecto
 cd katas/java
-
-# Compilar el proyecto (si existe pom.xml)
-mvn compile
-
-# Descargar dependencias de testing (JUnit)
-mvn test-compile
-```
-
-### Ejecutar Ejemplos
-
-**Opción 1: Compilar y Ejecutar (Recomendado para aprender)**
-
-```bash
-# Compilar
 javac src/CleanCode/naming/NamingBad.java
-
-# Ejecutar
 java CleanCode.naming.NamingBad
-```
-
-**Opción 2: Usar Maven (Para proyectos completos)**
-
-```bash
-# Crear proyecto Maven (solo una vez)
-mvn archetype:generate -DgroupId=com.katas -DartifactId=solid-katas
-
-# Compilar y ejecutar
-mvn compile exec:java -Dexec.mainClass="NamingBad"
-```
-
-**Opción 3: Usar Gradle**
-
-```bash
-# Crear proyecto Gradle (solo una vez)
-gradle init
-
-# Ejecutar
-gradle run
-```
-
-### Ejemplo Completo
-
-```bash
-# 1. Navegar a la carpeta
-cd katas/java
-
-# 2. Ejecutar ejemplo malo
-javac src/OOP/abstraction/AbstractionBad.java
-java OOP.abstraction.AbstractionBad
-
-# 3. Modificar el ejercicio
-code src/OOP/abstraction/AbstractionExercise.java
-
-# 4. Compilar y ejecutar tu solución
-javac src/OOP/abstraction/AbstractionExercise.java
-java OOP.abstraction.AbstractionExercise
-
-# 5. Ver la solución
-javac src/OOP/abstraction/AbstractionGood.java
-java OOP.abstraction.AbstractionGood
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -176,122 +87,37 @@ Cada carpeta incluye:
 3. **EjemploExercise.java** - Archivo para tu práctica
 4. **EjemploGood.java** - Código que sigue el principio
 
-### Cómo estudiar
+### Cómo estudiar cada concepto
 
 1. Lee el README del concepto
-2. Ejecuta y analiza el ejemplo malo
+2. Compila y ejecuta el ejemplo malo:
    ```bash
-   javac src/OOP/abstraction/AbstractionBad.java
-   java OOP.abstraction.AbstractionBad
+   javac src/.../EjemploBad.java
+   java Paquete.EjemploBad
    ```
-3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
-4. Ejecuta tu solución
-   ```bash
-   javac src/OOP/abstraction/AbstractionExercise.java
-   java OOP.abstraction.AbstractionExercise
-   ```
-5. Ejecuta y estudia el ejemplo bueno
-   ```bash
-   javac src/OOP/abstraction/AbstractionGood.java
-   java OOP.abstraction.AbstractionGood
-   ```
-
-### Compilar y ejecutar múltiples archivos
-
-```bash
-# Compilar todos los archivos de una carpeta
-javac src/CleanCode/naming/*.java
-
-# Ejecutar un archivo específico
-java CleanCode.naming.NamingGood
-```
+3. Refactoriza en el archivo Exercise
+4. Compila y ejecuta tu solución
+5. Compara con el ejemplo bueno
 
 ## 🧪 Tests Unitarios
 
-Cada concepto incluye tests unitarios completos usando **JUnit 5** para validar tanto las implementaciones malas como las buenas.
-
-### Instalación del framework de testing
-
-#### Opción 1: Descargar JUnit standalone
+**Con Maven (recomendado):**
 
 ```bash
-# Descargar JUnit Platform Console Standalone
-wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
-
-# O con curl
-curl -O https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
+mvn test                      # Todos los tests
+mvn test -Dtest=NamingTests   # Test específico
+mvn test -Dtest=SOLID.**      # Categoría completa
 ```
 
-#### Opción 2: Usar Maven (pom.xml)
+**Configurar Maven:** Agrega JUnit al `pom.xml`
 
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <version>5.9.3</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
-```
-
-#### Opción 3: Usar Gradle (build.gradle)
-
-```gradle
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
-}
-
-test {
-    useJUnitPlatform()
-}
-```
-
-### Ejecutar todos los tests
-
-```bash
-# Con Maven
-mvn test
-
-# Con Gradle
-gradle test
-
-# Con JUnit standalone (desde la raíz)
-java -jar junit-platform-console-standalone-1.9.3.jar \
-  --class-path . \
-  --scan-class-path
-```
-
-### Ejecutar tests por concepto
-
-```bash
-# Compilar tests de un concepto específico
-cd src/CleanCode/naming
-javac -cp .:../../../junit-platform-console-standalone-1.9.3.jar *.java
-
-# Ejecutar tests
-java -jar ../../../junit-platform-console-standalone-1.9.3.jar \
-  --class-path . \
-  --select-class NamingTests
-
-# O con Maven (si está configurado)
-mvn test -Dtest=NamingTests
-
-# O con Gradle
-gradle test --tests NamingTests
-```
-
-### Ejecutar tests por categoría
-
-```bash
-# Todos los tests de Clean Code
-mvn test -Dtest=CleanCode.**
-
-# Todos los tests de SOLID
-mvn test -Dtest=SOLID.**
-
-# Todos los tests de Patterns
-mvn test -Dtest=Patterns.**
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>5.9.3</version>
+    <scope>test</scope>
+</dependency>
 ```
 
 ## 🔍 Beneficios demostrados

@@ -42,18 +42,12 @@ Soluciones probadas para problemas comunes de diseño:
 
 ## 🚀 Preparativos
 
-### Prerequisitos - Instalación desde cero
+### 1. Instalar Node.js
 
-#### 1. Instalar Node.js y npm
-
-**Windows:**
+**Windows (Chocolatey):**
 
 ```bash
-# Opción A: Usando Chocolatey (recomendado)
 choco install nodejs-lts -y
-
-# Opción B: Descarga manual desde:
-# https://nodejs.org/ (descargar versión LTS)
 ```
 
 **Linux/macOS:**
@@ -67,74 +61,27 @@ sudo apt-get install -y nodejs
 brew install node
 ```
 
-**Verificar instalación:**
+**Verificar:**
 
 ```bash
-node --version  # Debe mostrar v16 o mayor
-npm --version   # Debe mostrar 7.0 o mayor
+node --version  # Debe mostrar v16+
+npm --version   # Debe mostrar 7.0+
 ```
 
-#### 2. Instalar dependencias del proyecto
+### 2. Instalar dependencias y ejecutar ejemplos
 
 ```bash
-# Navegar a la carpeta del proyecto
 cd katas/typescript
-
-# Instalar TypeScript, Jest y todas las dependencias
 npm install
-```
-
-### Ejecutar Ejemplos
-
-```bash
-# Ejecutar cualquier archivo
 npx ts-node src/CleanCode/naming/naming-bad.ts
-npx ts-node src/SOLID/srp/srp-good.ts
-npx ts-node src/Patterns/factory/factory-good.ts
-```
-
-### Ejemplo Completo
-
-```bash
-# 1. Instalar dependencias
-cd katas/typescript
-npm install
-
-# 2. Ejecutar un ejemplo
-npx ts-node src/OOP/abstraction/abstraction-bad.ts
-
-# 3. Modificar el ejercicio
-code src/OOP/abstraction/abstraction-exercise.ts
-
-# 4. Ejecutar tu solución
-npx ts-node src/OOP/abstraction/abstraction-exercise.ts
-
-# 5. Ver la solución
-npx ts-node src/OOP/abstraction/abstraction-good.ts
 ```
 
 ## 🧪 Tests Unitarios
 
-Cada concepto incluye tests unitarios completos que validan tanto las implementaciones malas como las buenas.
-
-### Ejecutar tests
-
 ```bash
-# Ejecutar todos los tests
-npm test
-
-# Ejecutar tests en modo watch (útil durante desarrollo)
-npm run test:watch
-
-# Ejecutar tests con reporte de cobertura
-npm run test:coverage
-
-# Ejecutar tests de un concepto específico
-npm test -- naming
-npm test -- functions
-npm test -- abstraction
-npm test -- srp
-npm test -- factory
+npm test                    # Todos los tests
+npm test -- naming          # Tests específicos
+npm run test:coverage       # Con cobertura
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -146,16 +93,13 @@ Cada carpeta incluye:
 3. **ejemplo-exercise.ts** - Archivo para tu práctica
 4. **ejemplo-good.ts** - Código que sigue el principio
 
-### Cómo estudiar
+### Cómo estudiar cada concepto
 
 1. Lee el README del concepto
-2. Ejecuta y analiza el ejemplo malo
-   > npx ts-node src/OOP/abstraction/abstraction-bad.ts
-3. Aplica los técnicas y principios aprendidos para refactoizar el ejemplo malo
-4. Ejecuta tu solución
-   > npx ts-node src/OOP/abstraction/abstraction-exercise.ts
-5. Ejecuta y estudia el ejemplo bueno
-   > npx ts-node src/OOP/abstraction/abstraction-good.ts
+2. Ejecuta el ejemplo malo: `npx ts-node src/.../ejemplo-bad.ts`
+3. Refactoriza en el archivo exercise
+4. Ejecuta tu solución: `npx ts-node src/.../ejemplo-exercise.ts`
+5. Compara con el ejemplo bueno: `npx ts-node src/.../ejemplo-good.ts`
 
 ---
 

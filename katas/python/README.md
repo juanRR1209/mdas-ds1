@@ -143,64 +143,11 @@ deactivate
 
 ## 🧪 Tests Unitarios
 
-Cada concepto incluye tests unitarios completos usando **pytest** para validar tanto las implementaciones malas como las buenas.
-
-### Instalación del framework de testing
-
 ```bash
-# Instalar pytest
-pip install pytest
-
-# O instalar con coverage
-pip install pytest pytest-cov
-```
-
-### Ejecutar todos los tests
-
-```bash
-# Ejecutar todos los tests del proyecto
-pytest
-
-# Ejecutar tests con salida detallada
-pytest -v
-
-# Ejecutar tests con coverage
-pytest --cov=. --cov-report=html
-
-# Ejecutar tests y mostrar print statements
-pytest -s
-```
-
-### Ejecutar tests por concepto
-
-```bash
-# Tests de Clean Code - Naming
-pytest src/CleanCode/naming/test_naming.py -v
-
-# Tests de SOLID - SRP
-pytest src/SOLID/srp/test_srp.py -v
-
-# Tests de Patterns - Factory
-pytest src/Patterns/factory/test_factory.py -v
-
-# Tests de OOP - Encapsulation
-pytest src/OOP/encapsulation/test_encapsulation.py -v
-```
-
-### Ejecutar tests por categoría
-
-```bash
-# Todos los tests de Clean Code
-pytest src/CleanCode/ -v
-
-# Todos los tests de SOLID
-pytest src/SOLID/ -v
-
-# Todos los tests de Patterns
-pytest src/Patterns/ -v
-
-# Todos los tests de OOP
-pytest src/OOP/ -v
+pytest                              # Todos los tests
+pytest src/SOLID/ -v                # Tests de una categoría
+pytest src/SOLID/srp/test_srp.py    # Test específico
+pytest --cov=. --cov-report=html    # Con cobertura
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -212,16 +159,13 @@ Cada carpeta incluye:
 3. **ejemplo_exercise.py** - Archivo para tu práctica
 4. **ejemplo_good.py** - Código que sigue el principio
 
-### Cómo estudiar
+### Cómo estudiar cada concepto
 
 1. Lee el README del concepto
-2. Ejecuta y analiza el ejemplo malo
-   > python src/CleanCode/naming/naming_bad.py
-3. Aplica los técnicas y principios aprendidos para refactorizar el ejemplo malo
-4. Ejecuta tu solución
-   > python src/CleanCode/naming/naming_exercise.py
-5. Ejecuta y estudia el ejemplo bueno
-   > python src/CleanCode/naming/naming_good.py
+2. Ejecuta el ejemplo malo: `python src/.../ejemplo_bad.py`
+3. Refactoriza en el archivo exercise
+4. Ejecuta tu solución: `python src/.../ejemplo_exercise.py`
+5. Compara con el ejemplo bueno: `python src/.../ejemplo_good.py`
 
 ---
 

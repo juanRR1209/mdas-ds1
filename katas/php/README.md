@@ -162,119 +162,21 @@ Cada carpeta incluye:
 3. **ejemplo-exercise.php** - Archivo para tu práctica
 4. **ejemplo-good.php** - Código que sigue el principio
 
-### Cómo estudiar
+### Cómo estudiar cada concepto
 
 1. Lee el README del concepto
-2. Ejecuta y analiza el ejemplo malo
-   > php src/CleanCode/naming/naming-bad.php
-3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
-4. Ejecuta tu solución
-   > php src/CleanCode/naming/naming-exercise.php
-5. Ejecuta y estudia el ejemplo bueno
-   > php src/CleanCode/naming/naming-good.php
+2. Ejecuta el ejemplo malo: `php src/.../ejemplo-bad.php`
+3. Refactoriza en el archivo exercise
+4. Ejecuta tu solución: `php src/.../ejemplo-exercise.php`
+5. Compara con el ejemplo bueno: `php src/.../ejemplo-good.php`
 
 ## 🧪 Tests Unitarios
 
-Cada concepto incluye tests unitarios completos usando **PHPUnit** para validar tanto las implementaciones malas como las buenas.
-
-### Instalación del framework de testing
-
-#### Opción 1: Con Composer (Recomendado)
-
 ```bash
-# Instalar Composer si no lo tienes
-# https://getcomposer.org/download/
-
-# Inicializar composer en el proyecto
-composer init
-
-# Instalar PHPUnit
-composer require --dev phpunit/phpunit ^10.0
-```
-
-#### Opción 2: Descargar PHPUnit directamente
-
-```bash
-# Descargar PHPUnit PHAR
-wget -O phpunit.phar https://phar.phpunit.de/phpunit-10.phar
-chmod +x phpunit.phar
-
-# Verificar instalación
-php phpunit.phar --version
-```
-
-### Ejecutar todos los tests
-
-```bash
-# Con Composer
-vendor/bin/phpunit .
-
-# O con PHAR
-php phpunit.phar .
-
-# Con salida detallada
-vendor/bin/phpunit --verbose .
-
-# Con coverage (requiere Xdebug)
-vendor/bin/phpunit --coverage-html coverage .
-```
-
-### Ejecutar tests por concepto
-
-```bash
-# Tests de Clean Code - Naming
-vendor/bin/phpunit src/CleanCode/naming/Tests.php
-
-# Tests de SOLID - SRP
-vendor/bin/phpunit src/SOLID/srp/Tests.php
-
-# Tests de Patterns - Factory
-vendor/bin/phpunit src/Patterns/factory/Tests.php
-
-# Tests de OOP - Encapsulation
-vendor/bin/phpunit src/OOP/encapsulation/Tests.php
-```
-
-### Ejecutar tests por categoría
-
-```bash
-# Todos los tests de Clean Code
-vendor/bin/phpunit src/CleanCode/
-
-# Todos los tests de SOLID
-vendor/bin/phpunit src/SOLID/
-
-# Todos los tests de Patterns
-vendor/bin/phpunit src/Patterns/
-
-# Todos los tests de OOP
-vendor/bin/phpunit src/OOP/
-```
-
-### Configuración de PHPUnit (phpunit.xml)
-
-Puedes crear un archivo `phpunit.xml` en la raíz para configurar PHPUnit:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         colors="true"
-         verbose="true">
-    <testsuites>
-        <testsuite name="CleanCode">
-            <directory>src/CleanCode</directory>
-        </testsuite>
-        <testsuite name="OOP">
-            <directory>src/OOP</directory>
-        </testsuite>
-        <testsuite name="SOLID">
-            <directory>src/SOLID</directory>
-        </testsuite>
-        <testsuite name="Patterns">
-            <directory>src/Patterns</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>
+vendor/bin/phpunit .                         # Todos los tests
+vendor/bin/phpunit src/SOLID/                # Categoría completa
+vendor/bin/phpunit src/SOLID/srp/Tests.php   # Test específico
+vendor/bin/phpunit --coverage-html coverage  # Con cobertura
 ```
 
 ## 🔍 Beneficios demostrados

@@ -42,18 +42,13 @@ Soluciones probadas para problemas comunes de diseño:
 
 ## 🚀 Preparativos
 
-### Prerequisitos - Instalación desde cero
+### 1. Instalar .NET SDK y dotnet-script
 
-#### 1. Instalar .NET SDK
-
-**Windows:**
+**Windows (Chocolatey):**
 
 ```bash
-# Opción A: Usando Chocolatey (recomendado)
 choco install dotnet-sdk -y
-
-# Opción B: Descarga manual desde:
-# https://dotnet.microsoft.com/download
+dotnet tool install -g dotnet-script
 ```
 
 **Linux/macOS:**
@@ -65,55 +60,23 @@ sudo bash dotnet-install.sh --channel 8.0
 
 # macOS (Homebrew)
 brew install dotnet-sdk
-```
 
-**Verificar instalación:**
-
-```bash
-dotnet --version  # Debe mostrar 6.0 o mayor
-```
-
-#### 2. Instalar dotnet-script (requerido para ejecutar ejemplos)
-
-```bash
-# Instalar globalmente (solo una vez)
+# Ambos sistemas
 dotnet tool install -g dotnet-script
-
-# Verificar instalación
-dotnet script --version
 ```
 
-### Ejecutar Ejemplos
-
-**Forma recomendada: Usar dotnet script**
+**Verificar:**
 
 ```bash
-# Navegar a la carpeta
-cd katas/csharp
+dotnet --version        # Debe mostrar 6.0+
+dotnet script --version # Debe mostrar versión instalada
+```
 
-# Ejecutar cualquier ejemplo
+### 2. Ejecutar ejemplos
+
+```bash
+cd katas/csharp
 dotnet script src/CleanCode/naming/naming-bad.cs
-dotnet script src/SOLID/srp/srp-good.cs
-dotnet script src/OOP/polymorphism/polymorphism-bad.cs
-```
-
-### Ejemplo Completo
-
-```bash
-# 1. Navegar a la carpeta
-cd katas/csharp
-
-# 2. Ejecutar ejemplo malo
-dotnet script src/SOLID/srp/srp-bad.cs
-
-# 3. Modificar el ejercicio
-code src/SOLID/srp/srp-exercise.cs
-
-# 4. Ejecutar tu solución
-dotnet script src/SOLID/srp/srp-exercise.cs
-
-# 5. Ver la solución
-dotnet script src/SOLID/srp/srp-good.cs
 ```
 
 ## 🎯 Formato de aprendizaje (20 minutos por concepto)
@@ -125,84 +88,25 @@ Cada carpeta incluye:
 3. **ejemplo-exercise.cs** - Archivo para tu práctica
 4. **ejemplo-good.cs** - Código que sigue el principio
 
-### Cómo estudiar
+### Cómo estudiar cada concepto
 
 1. Lee el README del concepto
-2. Ejecuta y analiza el ejemplo malo
-   ```bash
-   dotnet script src/OOP/abstraction/abstraction-bad.cs
-   ```
-3. Aplica las técnicas y principios aprendidos para refactorizar el ejemplo malo
-4. Ejecuta tu solución
-   ```bash
-   dotnet script src/OOP/abstraction/abstraction-exercise.cs
-   ```
-5. Ejecuta y estudia el ejemplo bueno
-   ```bash
-   dotnet script src/OOP/abstraction/abstraction-good.cs
-   ```
-
-### Ejecución de archivos individuales
-
-```bash
-# Opción recomendada: Usando dotnet script
-dotnet script src/CleanCode/naming/naming-bad.cs
-dotnet script src/SOLID/srp/srp-good.cs
-dotnet script src/OOP/polymorphism/polymorphism-bad.cs
-```
+2. Ejecuta el ejemplo malo: `dotnet script src/.../ejemplo-bad.cs`
+3. Refactoriza en el archivo exercise
+4. Ejecuta tu solución: `dotnet script src/.../ejemplo-exercise.cs`
+5. Compara con el ejemplo bueno: `dotnet script src/.../ejemplo-good.cs`
 
 ## 🧪 Tests Unitarios
 
-Cada concepto incluye tests unitarios completos usando **xUnit** para validar tanto las implementaciones malas como las buenas.
+Los archivos `Tests.cs` están disponibles para revisar, pero requieren configuración de proyecto xUnit para ejecutarse.
 
-**Nota:** Los archivos de tests (`Tests.cs`) están incluidos en cada carpeta pero requieren configuración adicional para ejecutarse. Los ejemplos de código están diseñados para ser ejecutados directamente con `dotnet script`.
+**Recomendación:** Ejecuta los ejemplos directamente con `dotnet script` para verificar el comportamiento.
 
-### Ver los tests disponibles
-
-```bash
-# Navegar a cualquier carpeta de concepto
-cd src/Patterns/factory
-
-# Ver el archivo de tests
-code Tests.cs
-```
-
-### Ejecutar tests (requiere configuración de proyecto)
-
-Para ejecutar los tests, necesitas crear un proyecto xUnit:
-
-```bash
-# 1. Crear proyecto de tests en la carpeta del concepto
-cd src/Patterns/factory
-dotnet new xunit -n FactoryTests
-
-# 2. Mover Tests.cs al nuevo proyecto
-mv Tests.cs FactoryTests/
-
-# 3. Copiar los archivos de implementación al proyecto
-cp factory-bad.cs FactoryTests/
-cp factory-good.cs FactoryTests/
-
-# 4. Ejecutar tests
-cd FactoryTests
-dotnet test
-```
-
-### Alternativa más simple: Ejecutar los ejemplos directamente
-
-En lugar de configurar proyectos de testing, puedes ejecutar los archivos de ejemplo directamente para ver su funcionamiento:
-
-```bash
-# Ejecutar ejemplo malo
+````bash
+# Ver comportamiento del código
 dotnet script src/Patterns/factory/factory-bad.cs
-
-# Ejecutar ejemplo bueno
 dotnet script src/Patterns/factory/factory-good.cs
-
-# Los ejemplos ya incluyen casos de uso que demuestran su comportamiento
-```
-
-## 🔍 Beneficios demostrados
+```## 🔍 Beneficios demostrados
 
 ### ✅ Clean Code:
 
@@ -282,7 +186,7 @@ dotnet test --filter "FullyQualifiedName~UserServiceBad"
 
 # Limpiar builds
 dotnet clean
-```
+````
 
 ## 📚 Recursos Adicionales
 
