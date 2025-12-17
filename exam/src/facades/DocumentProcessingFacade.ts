@@ -23,11 +23,11 @@ export class DocumentProcessingFacade {
     // 4. Retornar resultado del procesamiento
 
     var documento = new Documento(fileName, documentType , metadata || {}); 
+    this.result = this.processorService.process(documento);
     const isValid = this.validationService.validateDocument(documentType, documento);
     if (!isValid) {
-      throw new Error("Documento inválido");
+      this.result.messages.push("Documento inválido...");
     }
-    this.result = this.processorService.process(documento);
     return this.result;
   }
 

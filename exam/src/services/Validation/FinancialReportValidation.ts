@@ -13,7 +13,7 @@ export class FinancialReportValidation implements IValidationStrategy {
 
     private isExcel(document: Documento): boolean {
         const fileName = document.getExtensionFromFile();
-        return fileName.toLowerCase().endsWith('.xlsx') || fileName.toLowerCase().endsWith('.xls');
+        return fileName.toLowerCase().endsWith('xlsx') || fileName.toLowerCase().endsWith('xls');
     }
 
     private validateSize(document: Documento): boolean {

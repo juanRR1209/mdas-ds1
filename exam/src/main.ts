@@ -7,7 +7,7 @@ function main(): void {
   facade.processDocument("contrato_servicios_2024.pdf", FileType.ContratoLegal, {
     author: "Juan Pérez",
     version: "2.1.0",
-
+    FileSize: 2
   });
   facade.getReport();
 }

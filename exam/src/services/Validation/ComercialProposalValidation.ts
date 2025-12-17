@@ -23,12 +23,12 @@ export class ComercialProposalValidation implements IValidationStrategy {
 
     private isPDF(document: Documento): boolean {
         const fileName = document.getExtensionFromFile();
-        return fileName.toLowerCase().endsWith('.pdf');
+        return fileName.toLowerCase().endsWith('pdf');
     }
 
     private isWord(document: Documento): boolean {
         const fileName = document.getExtensionFromFile();
-        return fileName.toLowerCase().endsWith('.docx');
+        return fileName.toLowerCase().endsWith('docx');
     }   
     
 }

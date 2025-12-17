@@ -18,6 +18,7 @@ export class ProcessDocument implements IDocumentProcessor  {
     extractedData["extension"] = extension;
     messages.push(`File extension: ${extension}`);
     extractedData["metadata"] = metadata;
+    messages.push(`Metadata: ${JSON.stringify(metadata)}`);
 
     return new ProcessResult(true, extractedData, messages);
         

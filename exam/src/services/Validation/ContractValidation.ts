@@ -12,7 +12,7 @@ export class ContractValidation implements IValidationStrategy {
 
     private isPDF(document: Documento): boolean {
         const fileName = document.getExtensionFromFile();
-        return fileName.toLowerCase().endsWith('.pdf');
+        return fileName.toLowerCase() === 'pdf';
     }
     
     private validateSize(document: Documento): boolean {
